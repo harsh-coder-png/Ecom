@@ -1,0 +1,27 @@
+{% extends 'store/base.html' %}
+
+{% block body %}
+<div class="container">
+<form class="d-flex mt-5" role="search" action="/store/search" method="post">
+    {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="pid">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+</div>
+{% if products %}
+<div class="container mt-5">
+<div class="row mx-auto">
+    {% for i in products %}
+    <div class="card mx-auto mb-3" style="width: 18rem;">
+        <img src="{{i.image.url}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{i.name}}</h5>
+          <p class="card-text">{{i.desc}}</p>
+          <button type="submit" name="pid" class="btn btn-primary">Add To Cart</button>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+</div>
+{% endif %}
+{% endblock %}

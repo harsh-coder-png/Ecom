@@ -1,0 +1,42 @@
+{% extends 'store/base.html' %}
+
+{% block body %}
+
+
+
+<form action="/cart" method="POST"><center>
+  
+  {% csrf_token %}
+  <table class="table-primary" border="2" style="background-color: rgb(62, 150, 119);width: 800px;">
+  
+  <thead style="background-color: rgb(70, 65, 94);">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+  
+      <th scope="col">Quantity</th>
+      <th>Total Price</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  {% for i in products %}
+  <tbody style="background-color: rgb(68, 105, 105);">
+    <tr>
+      <td scope="row">{{i.name}}</td>
+      <td><img src="{{i.image.url}}" height="100px" width="70px"></td>
+      <td>{{i.quantity}}</td>
+      <td>{{i.total_price}}</td>
+      <td>
+        <button type="submit" formaction="/cart/deletefromcart" class="btn btn-primary" name="pname" value="{{i.name}}">Delete</button>
+      </td>
+    </tr>
+    
+  </tbody>
+  
+  {% endfor %}
+
+</table>
+<button formaction="/order/checkout" class="btn btn-success" name="pname" > Checkout</button>
+</form>
+
+{% endblock %}

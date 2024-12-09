@@ -1,0 +1,32 @@
+{% extends 'store/base.html' %}
+
+{% block body %}
+
+<div class="container" >
+    <div class="row my-3">
+        <div class="col-sm-6 offset-sm-3">
+            <h3>Enter details below</h3>
+            <form class="shadow p-5" action="/login" method="post" style="background-color: rgb(214, 160, 94);">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Username</label>
+                    <input type="text" name="username" class="form-control" id="exampleFormControlInput1" placeholder="Enter name">
+                  </div>
+                
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Password</label>
+                    <input type="password" name="pass1" class="form-control" id="exampleFormControlInput1" placeholder="Enter contact">
+                  </div>
+                  
+                  <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Log in</button>
+                  </div>
+            </form>
+            <div class="text-center text-primary">
+                Do not have a account?
+                <a href="/">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
